@@ -14,7 +14,6 @@ export const AppProvider = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // 🔥 STEP 1: GET TOKEN
                 const tokenRes = await fetch(
                     "https://t4e-testserver.onrender.com/api/public/token",
                     {
@@ -23,8 +22,8 @@ export const AppProvider = ({ children }) => {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            uniqueId: "E0423018", // ⚠️ CHANGE THIS TO YOUR ID
-                            set: "setA"
+                            uniqueId: "E0423018",
+                            set: "setB"
                         })
                     }
                 );
@@ -32,7 +31,6 @@ export const AppProvider = ({ children }) => {
                 const tokenData = await tokenRes.json();
                 const token = tokenData.token;
 
-                // 🔥 STEP 2: FETCH ACTIVITIES
                 const dataRes = await fetch(
                     "https://t4e-testserver.onrender.com/api/private/activities",
                     {
