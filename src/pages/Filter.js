@@ -9,21 +9,22 @@ const Filter = () => {
     const [error, setError] = useState("");
 
     const handleFilter = () => {
-        // ❌ Empty input
+        // Empty input
         if (input.trim() === "") {
             setError("Please enter a value");
             return;
         }
 
-        // ❌ Invalid input
-        if (isNaN(input) || Number(input) < 0) {
+        // Invalid input — use Number.isNaN for reliable string-to-number check
+        const parsed = Number(input.trim());
+        if (Number.isNaN(parsed) || parsed < 0) {
             setError("Invalid input");
             return;
         }
 
-        // ✅ Valid
+        // Valid
         setError("");
-        dispatch({ type: "FILTER_STEPS", payload: input });
+        dispatch({ type: "FILTER_STEPS", payload: parsed });
     };
 
     return (
@@ -38,10 +39,8 @@ const Filter = () => {
 
             <button onClick={handleFilter}>Filter</button>
 
-            {/* 🔥 Error Message */}
             {error && <p>{error}</p>}
 
-            {/* 🔥 Filtered Results */}
             <ItemList items={state.filtered} />
         </div>
     );

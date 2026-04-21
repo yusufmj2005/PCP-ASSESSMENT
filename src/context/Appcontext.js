@@ -28,7 +28,16 @@ export const AppProvider = ({ children }) => {
                     }
                 );
 
+                if (!tokenRes.ok) {
+                    throw new Error(`Token request failed: ${tokenRes.status} ${tokenRes.statusText}`);
+                }
+
                 const tokenData = await tokenRes.json();
+
+                if (!tokenData.token) {
+                    throw new Error("No token received from server");
+                }
+
                 const token = tokenData.token;
 
                 const dataRes = await fetch(
@@ -40,14 +49,16 @@ export const AppProvider = ({ children }) => {
                     }
                 );
 
-                const data = await dataRes.json();
+                if (!dataRes.ok) {
+                    throw new Error(`Data request failed: ${dataRes.status} ${dataRes.statusText}`);
+                }
 
+                const data = await dataRes.json();
                 dispatch({ type: "SET_DATA", payload: data });
             } catch (err) {
-                console.error(err);
+                console.error("Failed to load activities:", err);
             }
         };
-
         fetchData();
     }, []);
 

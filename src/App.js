@@ -7,8 +7,8 @@ import Stats from "./pages/Stats";
 
 function App() {
     return (
-        <AppProvider>
-            <Router>
+        <Router>
+            <AppProvider>
                 <Routes>
                     <Route path="/" element={<Navigate to="/activities" />} />
                     <Route path="/activities" element={<Activities />} />
@@ -16,8 +16,8 @@ function App() {
                     <Route path="/filter" element={<Filter />} />
                     <Route path="/stats" element={<Stats />} />
                 </Routes>
-            </Router>
-        </AppProvider>
+            </AppProvider>
+        </Router>
     );
 }
 

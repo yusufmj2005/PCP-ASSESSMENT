@@ -5,7 +5,7 @@ import ItemList from "../Components/ItemList";
 const Activities = () => {
     const { state } = useContext(AppContext);
 
-    return <ItemList items={state.data} />;
+    return <ItemList items={state.filtered} />;
 };
 
 export default Activities;
