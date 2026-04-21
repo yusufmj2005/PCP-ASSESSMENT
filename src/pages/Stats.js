@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../context/Appcontext";
 
 const Stats = () => {
@@ -15,6 +15,14 @@ const Stats = () => {
     const goalNotAchieved = validData.filter(
         (item) => item.goalAchieved === false
     ).length;
+
+    useEffect(() => {
+        window.appState = {
+            totalActivities,
+            goalAchieved,
+            goalNotAchieved
+        };
+    }, [totalActivities, goalAchieved, goalNotAchieved]);
 
     return (
         <div>
