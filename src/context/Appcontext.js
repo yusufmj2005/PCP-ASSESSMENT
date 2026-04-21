@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
                             "Content-Type": "application/json"
                         },
                         body: JSON.stringify({
-                            uniqueId: "E0423018",
+                            uniqueId: "e0423018",
                             set: "setB"
                         })
                     }
