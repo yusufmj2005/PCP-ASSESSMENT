@@ -319,6 +319,20 @@ const AppReducer = (state, action) => {
                     b.name.localeCompare(a.name)
                 )
             };
+        case "TOGGLE_GOAL":
+            return {
+                ...state,
+                data: state.data.map((item) =>
+                    item.ActivityId === action.payload
+                        ? { ...item, goalAchieved: !item.goalAchieved }
+                        : item
+                ),
+                filtered: state.filtered.map((item) =>
+                    item.ActivityId === action.payload
+                        ? { ...item, goalAchieved: !item.goalAchieved }
+                        : item
+                )
+            };
 
         default:
             return state;

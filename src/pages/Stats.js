@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
-import { AppContext } from "../context/Appcontext";
+import { AppContext } from "../context/AppContext";
 
 const Stats = () => {
     const { state } = useContext(AppContext);
 
-    const validData = state.data;
+    const validData = state.data || [];
 
     const totalActivities = validData.length;
 
@@ -26,6 +26,8 @@ const Stats = () => {
 
     return (
         <div>
+            <h2>Analytics Dashboard</h2>
+
             <p data-testid="total-activities">{totalActivities}</p>
             <p data-testid="goal-achieved">{goalAchieved}</p>
             <p data-testid="goal-not-achieved">{goalNotAchieved}</p>
