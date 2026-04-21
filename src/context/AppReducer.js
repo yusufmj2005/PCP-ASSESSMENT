@@ -1,19 +1,20 @@
 const AppReducer = (state, action) => {
     switch (action.type) {
         case "SET_DATA":
-            const cleanedData = action.payload.filter((item) => {
-                return (
+            const cleaned = action.payload.filter(
+                (item) =>
                     item &&
                     item.ActivityId !== undefined &&
                     item.name &&
                     typeof item.goalAchieved === "boolean"
-                );
-            });
+            );
+
             return {
                 ...state,
-                data: cleanedData,
-                filtered: cleanedData
+                data: cleaned,
+                filtered: cleaned
             };
+
         case "FILTER":
             return {
                 ...state,
@@ -28,4 +29,5 @@ const AppReducer = (state, action) => {
             return state;
     }
 };
+
 export default AppReducer;

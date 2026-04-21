@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { AppContext } from "../context/Appcontext";
 import ItemList from "../Components/ItemList";
+
 const Filter = () => {
     const { state, dispatch } = useContext(AppContext);
+
     return (
         <div>
             <input
                 data-testid="filter-input"
-                placeholder="Search activity"
+                placeholder="Search"
                 onChange={(e) =>
                     dispatch({ type: "FILTER", payload: e.target.value })
                 }
@@ -16,4 +18,5 @@ const Filter = () => {
         </div>
     );
 };
+
 export default Filter;

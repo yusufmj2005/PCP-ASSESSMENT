@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AppProvider } from "./context/Appcontext";
 import Activities from "./pages/Activities";
 import ActivityDetails from "./pages/ActivityDetails";
@@ -10,6 +10,7 @@ function App() {
         <AppProvider>
             <Router>
                 <Routes>
+                    <Route path="/" element={<Navigate to="/activities" />} />
                     <Route path="/activities" element={<Activities />} />
                     <Route path="/activities/:id" element={<ActivityDetails />} />
                     <Route path="/filter" element={<Filter />} />
@@ -19,4 +20,5 @@ function App() {
         </AppProvider>
     );
 }
+
 export default App;

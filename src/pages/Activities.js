@@ -7,4 +7,5 @@ const Activities = () => {
 
     return <ItemList items={state.data} />;
 };
+
 export default Activities;

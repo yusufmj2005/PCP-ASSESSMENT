@@ -1,13 +1,11 @@
 import { useContext, useEffect } from "react";
 import { AppContext } from "../context/Appcontext";
+
 const Stats = () => {
     const { state } = useContext(AppContext);
-    const validData = state.data.filter(
-        (item) =>
-            item &&
-            item.name &&
-            typeof item.goalAchieved === "boolean"
-    );
+
+    const validData = state.data;
+
     const totalActivities = validData.length;
 
     const goalAchieved = validData.filter(
@@ -17,13 +15,15 @@ const Stats = () => {
     const goalNotAchieved = validData.filter(
         (item) => item.goalAchieved === false
     ).length;
+
     useEffect(() => {
         window.appState = {
             totalActivities,
             goalAchieved,
             goalNotAchieved
         };
-    }, [state]);
+    }, [validData]);
+
     return (
         <div>
             <p data-testid="total-activities">{totalActivities}</p>
@@ -32,4 +32,5 @@ const Stats = () => {
         </div>
     );
 };
+
 export default Stats;

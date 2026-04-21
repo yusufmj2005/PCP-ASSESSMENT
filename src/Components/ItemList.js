@@ -4,10 +4,8 @@ const ItemList = ({ items }) => {
     return (
         <div>
             {items.map((item) => (
-                <Link to={`/activities/${item.ActivityId}`} key={item.ActivityId}>
-                    <div data-testid="activity-item">
-                        {item.name}
-                    </div>
+                <Link key={item.ActivityId} to={`/activities/${item.ActivityId}`}>
+                    <div data-testid="activity-item">{item.name}</div>
                 </Link>
             ))}
         </div>

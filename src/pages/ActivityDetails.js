@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AppContext } from "../context/Appcontext";
+
 const ActivityDetails = () => {
     const { id } = useParams();
     const { state } = useContext(AppContext);
+
     const activity = state.data.find(
         (item) => String(item.ActivityId) === id
     );
+
     if (!activity) return <p>Not Found</p>;
 
     return (
@@ -19,4 +22,5 @@ const ActivityDetails = () => {
         </div>
     );
 };
+
 export default ActivityDetails;
