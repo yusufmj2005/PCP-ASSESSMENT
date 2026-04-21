@@ -4,7 +4,7 @@ const ItemList = ({ items }) => {
     return (
         <div>
             {items.map((item) => (
-                <Link key={item.ActivityId} to={`/activities/${item.ActivityId}`}>
+                <Link to={`/activities/${item.ActivityId}`}>
                     <div data-testid="activity-item">{item.name}</div>
                 </Link>
             ))}
