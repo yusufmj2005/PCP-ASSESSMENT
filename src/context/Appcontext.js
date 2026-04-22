@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
         const fetchData = async () => {
             try {
                 const tokenRes = await fetch(
-                    "https://t4e-testserver.onrender.com/api/public/token",
+                    "https://t4e-testserver.onrender.com/api",
                     {
                         method: "POST",
                         headers: {
