@@ -9,20 +9,15 @@ const Filter = () => {
     const [error, setError] = useState("");
 
     const handleFilter = () => {
-        // Empty input
         if (input.trim() === "") {
             setError("Please enter a value");
             return;
         }
-
-        // Invalid input — use Number.isNaN for reliable string-to-number check
         const parsed = Number(input.trim());
         if (Number.isNaN(parsed) || parsed < 0) {
             setError("Invalid input");
             return;
         }
-
-        // Valid
         setError("");
         dispatch({ type: "FILTER_STEPS", payload: parsed });
     };
